@@ -53,14 +53,14 @@ public class BoardController {
     //목록에서 상세버튼을 클릭했을 때 상세보기 처리 후 데이터를 페이지에 전달
     //Form으로 전달시에는 get, post로 전달가능
     //그외는 get 전달
-    @PostMapping("/read")
+    @GetMapping("/read")
     public String readProc(@RequestParam Integer id, Model model) {
         log.info("개별 읽기...");
         BoardDTO boardDTO = boardService.read(id);  //전달자가 있으면 변수로 받는다.
 
+        log.info("개별정보를 페이지에 전달...");
         model.addAttribute("board", boardDTO);
 
-        log.info("개별정보를 페이지에 전달...");
         return "read";
     }
     //목록에서 수정버튼을 클릭했을 때 수정폼 페이지 처리
